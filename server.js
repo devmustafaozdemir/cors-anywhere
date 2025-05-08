@@ -16,6 +16,11 @@ function parseEnvList(env) {
   return env.split(',');
 }
 
+// Sağlık kontrolü için endpoint
+app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Set up rate-limiting to avoid abuse of the public CORS Anywhere server.
 var checkRateLimit = require('./lib/rate-limit')(process.env.CORSANYWHERE_RATELIMIT);
 
